@@ -130,7 +130,7 @@ export default function Footer() {
                 <Image
                   w="100%"
                   pos="absolute"
-                  top="-50px"
+                  top="-1rem"
                   // left="0"
                   // left="10px"
                   src="/assets/images/stripe-mobile.png"

@@ -36,6 +36,8 @@ import {
   MenuItem,
   MenuList,
   useMediaQuery,
+  Flex,
+  Heading,
 } from '@chakra-ui/react'
 import HeroSection from '../../../components/hero-section'
 import EventsScreen from './events_screen'
@@ -43,6 +45,7 @@ import { FiMapPin } from 'react-icons/fi'
 import Calendar from '../../../components/calendar'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { auth, Db } from '@/firebaseConfig'
+import { FaChevronRight } from 'react-icons/fa'
 
 export default function Events() {
   const [isLargerThan671] = useMediaQuery('(min-width: 671px)')
@@ -55,6 +58,7 @@ export default function Events() {
   const [location, setLocation] = useState('')
   const [collaborators, setCollaborators] = useState<string[]>([])
   const [selectedCollaborator, setSelectedCollaborator] = useState('')
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const toast = useToast()
   const openDrawer = () => setDrawerOpen(true)
@@ -161,9 +165,93 @@ export default function Events() {
     )
   }
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && auth.currentUser) {
+      const checkIfAdmin = async () => {
+        try {
+          const adminCollection = collection(Db, 'users')
+          const q = query(
+            adminCollection,
+            where('uid', '==', auth.currentUser?.uid)
+          )
+          const querySnapshot = await getDocs(q)
+
+          if (!querySnapshot.empty) {
+            const userData = querySnapshot.docs[0].data()
+            const userRole = userData.isAdmin || false
+            setIsAdmin(userRole)
+          } else {
+            setIsAdmin(false)
+          }
+        } catch (error) {
+          console.error('Failed to verify user role:', error)
+          toast({
+            title: 'Error',
+            description: 'Failed to verify user role.',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          })
+        }
+      }
+      checkIfAdmin()
+    }
+  }, [auth.currentUser?.uid])
+
   return (
     <>
-      <HeroSection
+      <Box
+        mt="3.5rem"
+        bgImage={
+          isLargerThan671
+            ? '/assets/images/about-hero.png'
+            : '/assets/images/mobile-about-hero.png'
+        }
+        bgSize="cover"
+        bgPosition="center"
+        bgRepeat="no-repeat"
+        display="flex"
+        justifyContent="center"
+        textAlign="center"
+        color="white"
+        width="100%"
+        height="25.75rem"
+        py="20"
+        px="8">
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center">
+          <Heading
+            fontSize={{ base: '1.5rem', lg: '3.5rem' }}
+            fontWeight="700"
+            mb="1rem"
+            color="white">
+            Events calendar
+          </Heading>
+          <Text
+            fontSize={{ base: '0.875rem', lg: '1.25rem' }}
+            mb="1.5rem"
+            width="75%"
+            fontWeight="400"
+            color="white">
+            Stay updated with our upcoming events and activities that enrich our
+            community and learning environment.
+          </Text>
+          {isAdmin ? (
+            <Stack alignItems="center" maxW="61rem" gap="1rem">
+              <Button
+                rightIcon={<FaChevronRight />}
+                colorScheme="blue"
+                w="fit-content"
+                onClick={openDrawer}>
+                Create New Event
+              </Button>
+            </Stack>
+          ) : null}
+        </Flex>
+      </Box>
+      {/* <HeroSection
         title={'Events calendar'}
         description={
           'Stay updated with our upcoming events and activities that enrich our community and learning environment.'
@@ -175,7 +263,7 @@ export default function Events() {
         }
         buttonText="Create New Event"
         onButtonClick={openDrawer}
-      />
+      /> */}
 
       <Box px={{ base: '1rem', md: '5.25rem' }} p="0">
         <Tabs
@@ -212,7 +300,7 @@ export default function Events() {
         </Tabs>
       </Box>
 
-      <Drawer 
+      <Drawer
         size="md"
         isOpen={isDrawerOpen}
         placement="right"

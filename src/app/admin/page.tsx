@@ -30,7 +30,6 @@ const AdminPage = () => {
   const toast = useToast()
   const router = useRouter()
 
-  // Verify if the user has admin access
   const verifyAdmin = async () => {
     try {
       const user = auth.currentUser
@@ -56,9 +55,9 @@ const AdminPage = () => {
     const checkAccess = async () => {
       const isAdmin = await verifyAdmin()
       if (!isAdmin) {
-        router.push('/404') // Redirect to 404 page
+        router.push('/404') 
       } else {
-        setAuthenticating(false) // Allow access
+        setAuthenticating(false) 
       }
     }
 
@@ -205,10 +204,15 @@ const AdminPage = () => {
   }
 
   return (
-    <Flex direction="column" align="center" justify="center" mb="2rem">
+    <Flex
+      px="1rem"
+      direction="column"
+      align="center"
+      justify="center"
+      mb="2rem">
       <Box
         mt="10rem"
-        w="80%"
+        w={{ base: '100%', md: '80%' }}
         maxW="600px"
         p="3rem"
         border="1px solid #ddd"
@@ -216,7 +220,11 @@ const AdminPage = () => {
         boxShadow="lg"
         bg="white"
         textAlign="center">
-        <Text fontSize="2xl" fontWeight="bold" mb="2rem" color="teal.600">
+        <Text
+          fontSize={{ base: '1rem', md: '2rem' }}
+          fontWeight="bold"
+          mb="2rem"
+          color="teal.600">
           Manage Admin Privileges
         </Text>
 
@@ -256,6 +264,7 @@ const AdminPage = () => {
         <Stack spacing={4}>
           {adminUsers.map((user: any) => (
             <Flex
+              flexDir={{ base: 'column', md: 'row' }}
               key={user.email}
               justify="space-between"
               align="center"

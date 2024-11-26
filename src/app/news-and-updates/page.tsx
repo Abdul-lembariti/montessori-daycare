@@ -412,7 +412,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronLeft />}
+                              icon={
+                                <Image src="/assets/icons/icons-left.svg" />
+                              }
                             />
                             <Text>
                               {page + 1} of {totalPages}
@@ -427,7 +429,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronRight />}
+                              icon={
+                                <Image src="/assets/icons/icons-right.svg" />
+                              }
                             />
                           </Flex>
                         </>
@@ -570,7 +574,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronLeft />}
+                              icon={
+                                <Image src="/assets/icons/icons-left.svg" />
+                              }
                             />
                             <Text>
                               {page + 1} of {totalPages}
@@ -585,7 +591,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronRight />}
+                              icon={
+                                <Image src="/assets/icons/icons-right.svg" />
+                              }
                             />
                           </Flex>
                         </>
@@ -728,7 +736,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronLeft />}
+                              icon={
+                                <Image src="/assets/icons/icons-left.svg" />
+                              }
                             />
                             <Text>
                               {page + 1} of {totalPages}
@@ -743,7 +753,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronRight />}
+                              icon={
+                                <Image src="/assets/icons/icons-right.svg" />
+                              }
                             />
                           </Flex>
                         </>
@@ -885,7 +897,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronLeft />}
+                              icon={
+                                <Image src="/assets/icons/icons-left.svg" />
+                              }
                             />
                             <Text>
                               {page + 1} of {totalPages}
@@ -900,7 +914,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronRight />}
+                              icon={
+                                <Image src="/assets/icons/icons-right.svg" />
+                              }
                             />
                           </Flex>
                         </>
@@ -1042,7 +1058,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronLeft />}
+                              icon={
+                                <Image src="/assets/icons/icons-left.svg" />
+                              }
                             />
                             <Text>
                               {page + 1} of {totalPages}
@@ -1057,7 +1075,9 @@ achievements from our Montessori community."
                               colorScheme="black"
                               rounded="full"
                               aria-label="next page"
-                              icon={<FaChevronRight />}
+                              icon={
+                                <Image src="/assets/icons/icons-right.svg" />
+                              }
                             />
                           </Flex>
                         </>
@@ -1398,7 +1418,11 @@ achievements from our Montessori community."
                           </CardFooter>
                         </Card>
                       ))}
-                      <Flex justify="center" gap="1.2rem" mt="2rem">
+                      <Flex
+                        justify="center"
+                        gap="1.2rem"
+                        mt="2rem"
+                        align="center">
                         <IconButton
                           onClick={handlePreviousPage}
                           disabled={page <= 0}
@@ -1406,7 +1430,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="prev page"
-                          icon={<FaChevronLeft />}
+                          icon={<Image src="/assets/icons/icons-left.svg" />}
                         />
                         <Text>
                           {page + 1} of {totalPages}
@@ -1420,7 +1444,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronRight />}
+                          icon={<Image src="/assets/icons/icons-right.svg" />}
                         />
                       </Flex>
                     </>
@@ -1548,7 +1572,11 @@ achievements from our Montessori community."
                         />
                       )}
 
-                      <Flex justify="center" gap="1.2rem" mt="2rem">
+                      <Flex
+                        justify="center"
+                        gap="1.2rem"
+                        mt="2rem"
+                        align="center">
                         <IconButton
                           onClick={handlePreviousPage}
                           disabled={page <= 0}
@@ -1556,7 +1584,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronLeft />}
+                          icon={<Image src="/assets/icons/icons-left.svg" />}
                         />
                         <IconButton
                           onClick={handleNextPage}
@@ -1567,7 +1595,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronRight />}
+                          icon={<Image src="/assets/icons/icons-right.svg" />}
                         />
                       </Flex>
                     </>
@@ -1694,7 +1722,11 @@ achievements from our Montessori community."
                         />
                       )}
 
-                      <Flex justify="center" gap="1.2rem" mt="2rem">
+                      <Flex
+                        justify="center"
+                        gap="1.2rem"
+                        mt="2rem"
+                        align="center">
                         <IconButton
                           onClick={handlePreviousPage}
                           disabled={page <= 0}
@@ -1702,7 +1734,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronLeft />}
+                          icon={<Image src="/assets/icons/icons-left.svg" />}
                         />
                         <Text>
                           {page + 1} of {totalPages}
@@ -1716,7 +1748,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronRight />}
+                          icon={<Image src="/assets/icons/icons-right.svg" />}
                         />
                       </Flex>
                     </>
@@ -1843,7 +1875,11 @@ achievements from our Montessori community."
                         />
                       )}
 
-                      <Flex justify="center" gap="1.2rem" mt="2rem">
+                      <Flex
+                        justify="center"
+                        gap="1.2rem"
+                        mt="2rem"
+                        align="center">
                         <IconButton
                           onClick={handlePreviousPage}
                           disabled={page <= 0}
@@ -1851,7 +1887,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronLeft />}
+                          icon={<Image src="/assets/icons/icons-left.svg" />}
                         />
                         <IconButton
                           onClick={handleNextPage}
@@ -1862,7 +1898,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronRight />}
+                          icon={<Image src="/assets/icons/icons-right.svg" />}
                         />
                       </Flex>
                     </>
@@ -1989,7 +2025,11 @@ achievements from our Montessori community."
                         />
                       )}
 
-                      <Flex justify="center" gap="1.2rem" mt="2rem">
+                      <Flex
+                        justify="center"
+                        gap="1.2rem"
+                        mt="2rem"
+                        align="center">
                         <IconButton
                           onClick={handlePreviousPage}
                           disabled={page <= 0}
@@ -1997,7 +2037,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronLeft />}
+                          icon={<Image src="/assets/icons/icons-left.svg" />}
                         />
                         <IconButton
                           onClick={handleNextPage}
@@ -2008,7 +2048,7 @@ achievements from our Montessori community."
                           colorScheme="black"
                           rounded="full"
                           aria-label="next page"
-                          icon={<FaChevronRight />}
+                          icon={<Image src="/assets/icons/icons-right.svg" />}
                         />
                       </Flex>
                     </>

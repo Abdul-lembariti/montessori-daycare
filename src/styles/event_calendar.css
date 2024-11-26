@@ -4,11 +4,20 @@
   border-radius: 1rem;
 }
 
-.fc-toolbar-title {
+.fc .fc-toolbar-title {
   font-size: 1.75rem;
   font-weight: 700;
   color: #2d3748;
   text-align: left;
+}
+
+@media screen and (max-width: 671px) {
+  .fc .fc-toolbar-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.64);
+    text-align: left;
+  }
 }
 
 .fc-toolbar-chunk {
@@ -55,6 +64,8 @@
 .fc-daygrid-day {
   margin: 0;
   padding: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .fc-theme-standard td,
@@ -64,7 +75,11 @@
   margin: 0;
   padding-right: 1rem;
   padding-left: 1rem;
-  padding-bottom: 1.5rem;
+  /* padding-bottom: 1.5rem; */
+}
+
+.fc-theme-standard td {
+  padding-bottom: 1rem;
 }
 
 .fc-daygrid-day {
@@ -92,7 +107,9 @@
   left: 0;
   right: 0;
   bottom: 0;
+
   border: 2px solid #9c271f;
+
   border-radius: 1rem;
   z-index: 1;
 }
@@ -100,6 +117,18 @@
 .fc .fc-daygrid-day-frame {
   position: relative;
   z-index: 2;
+}
+@media screen and (max-width: 671px) {
+  .fc .fc-daygrid-day-frame {
+    /* width: 2.77rem; */
+    height: 100%;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    /* background-color: red; */
+  }
 }
 
 .fc-theme-standard td,
@@ -115,6 +144,12 @@
   margin: 0;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+}
+
+@media screen and (max-width: 671px) {
+  .fc .fc-toolbar.fc-header-toolbar {
+    padding: 1rem;
+  }
 }
 
 .fc .fc-highlight {

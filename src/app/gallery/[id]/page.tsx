@@ -473,7 +473,7 @@ const AlbumDetail = () => {
           <Box
             h="5.25rem"
             display="flex"
-            mt={{base:'10px',md:'0px'}}
+            mt={{ base: '10px', md: '0px' }}
             alignItems={{ base: 'start', md: 'center' }}>
             <Image
               onClick={() => {
@@ -498,7 +498,7 @@ const AlbumDetail = () => {
             {isAdmin ? (
               <Flex mt="1.5rem" gap="2rem" w={{ base: '100%', md: '' }}>
                 <Button
-                  w={{ base: '100%', md: '10.1875rem' }}
+                  w={{ base: '4rem', md: '10.1875rem' }}
                   fontSize="1rem"
                   px="1.5rem"
                   h="3rem"
@@ -508,10 +508,10 @@ const AlbumDetail = () => {
                   color="#E53E3E"
                   border="1px solid  #E53E3E"
                   onClick={onOpen}>
-                  Delete
+                  {isLargerThan671 ? 'Delete' : ''}
                 </Button>
                 <Button
-                  w={{ base: '100%', md: '10.1875rem' }}
+                  w={{ base: '14rem', md: '10.1875rem' }}
                   colorScheme="none"
                   h="3rem"
                   leftIcon={<Image src="/assets/icons/edit-icon.svg" />}
@@ -558,7 +558,8 @@ const AlbumDetail = () => {
             isDisabled={page === 0 || loading}
             aria-label="Previous Page"
             variant="outline"
-            colorScheme="black"
+            colorScheme="none"
+            bg="black"
             size="3rem">
             <ChevronLeftIcon />
           </Button>
@@ -572,7 +573,8 @@ const AlbumDetail = () => {
             isDisabled={endIndex >= album.galleryImages.length || loading}
             rounded="full"
             variant="outline"
-            colorScheme="black"
+            colorScheme="none"
+            bg="black"
             size="3rem">
             <ChevronRightIcon />
           </Button>
@@ -629,7 +631,8 @@ const AlbumDetail = () => {
                         position="absolute"
                         top="0"
                         right="0"
-                        colorScheme="red"
+                        colorScheme="none"
+                        bg="red"
                         onClick={() => handleRemoveImage(index)}>
                         ✕
                       </Button>
@@ -672,17 +675,26 @@ const AlbumDetail = () => {
           </DrawerBody>
 
           <DrawerFooter display="flex" justifyContent="center">
-            <Button colorScheme="gray" mr={3} onClick={handleCloseDrawer}>
+            <Button
+              colorScheme="none"
+              color="black"
+              bg="gray"
+              mr={3}
+              onClick={handleCloseDrawer}>
               Cancel
             </Button>
-            <Button colorScheme="blue" onClick={handleEditAlbum}>
+            <Button
+              colorScheme="none"
+              bg="#066FE2"
+              color="white"
+              onClick={handleEditAlbum}>
               Save
             </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
@@ -702,11 +714,18 @@ const AlbumDetail = () => {
             <Button
               width="12rem"
               variant="outline"
-              colorScheme="gray"
+              colorScheme="none"
+              bg="gray"
+              color="black"
               onClick={onClose}>
               Cancel
             </Button>
-            <Button width="12rem" variant="red" onClick={handleDelete}>
+            <Button
+              width="12rem"
+              bg="#E53E3E"
+              colorScheme="none"
+              color="white"
+              onClick={handleDelete}>
               Delete
             </Button>
           </ModalFooter>
@@ -746,7 +765,9 @@ const AlbumDetail = () => {
             </Box>
             {isAdmin ? (
               <Button
-                colorScheme="red"
+                colorScheme="none"
+                bg="red"
+                color="white"
                 variant="outline"
                 _hover={{
                   colorSchem: 'red',

@@ -224,12 +224,12 @@ body {
 .wrapper .container .text article button {
   height: 40px;
   padding: 0 30px;
-  border-radius: 50px;
+  border-radius: 0.3rem;
   cursor: pointer;
   box-shadow: 0px 15px 20px rgba(54, 24, 79, 0.5);
   z-index: 3;
-  color: #695681;
-  background-color: white;
+  color: white;
+  background-color: #066fe2;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
@@ -280,15 +280,16 @@ body {
   position: absolute;
   width: 800px;
   height: 800px;
-  background-color: rgba(54, 24, 79, 0.2);
+  background-color: #dce9f7;
   border-radius: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: inset 5px 20px 40px rgba(54, 24, 79, 0.25),
-    inset 5px 0px 5px rgba(50, 36, 62, 0.3),
-    inset 5px 5px 20px rgba(50, 36, 62, 0.25),
-    2px 2px 5px rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 20px 40px 0px rgba(235, 239, 243, 0.25) inset,
+    5px 0px 5px 0px rgba(214, 218, 226, 0.3) inset,
+    5px 5px 20px 0px rgba(154, 158, 168, 0.25) inset,
+    2px 2px 5px 0px rgba(103, 107, 116, 0.2);
+
   animation: circle 0.8s cubic-bezier(1, 0.06, 0.25, 1) backwards;
 }
 @keyframes circle {
@@ -308,12 +309,12 @@ body {
   position: absolute;
   width: 600px;
   height: 600px;
-  background-color: rgba(54, 24, 79, 0.3);
+  background-color: #8796af;
   border-radius: 100%;
-  box-shadow: inset 5px 20px 40px rgba(54, 24, 79, 0.25),
+  /* box-shadow: inset 5px 20px 40px rgba(54, 24, 79, 0.25),
     inset 5px 0px 5px rgba(50, 36, 62, 0.3),
     inset 5px 5px 20px rgba(50, 36, 62, 0.25),
-    2px 2px 5px rgba(255, 255, 255, 0.2);
+    2px 2px 5px rgba(255, 255, 255, 0.2); */
   animation: circle 0.8s 0.4s cubic-bezier(1, 0.06, 0.25, 1) backwards;
 }
 @media screen and (max-width: 799px) {

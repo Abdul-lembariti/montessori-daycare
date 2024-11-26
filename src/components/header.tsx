@@ -268,7 +268,7 @@ const Header = () => {
                     </Box>
                   </Flex>
                 </DrawerHeader>
-                <DrawerBody px="0px">
+                <DrawerBody zIndex="2" px="0px">
                   <Flex direction="column" align="center" mb={6}>
                     <Avatar
                       name={user?.displayName || 'Anonymous'}
@@ -534,6 +534,7 @@ const Header = () => {
                       </AccordionItem>
                     </Accordion>
                     <Button
+                      zIndex="2"
                       as={Link}
                       justifyContent="start"
                       bg={
@@ -557,20 +558,34 @@ const Header = () => {
                       href="/support">
                       Site Support
                     </Button>
+                    <Button
+                      display={!user ? 'none' : 'flex'}
+                      zIndex="2"
+                      justifyContent="start"
+                      width="100%"
+                      px="0.75rem"
+                      bg="transparent"
+                      onClick={handleSignOut}
+                      py="0.5rem"
+                      h="3rem"
+                      _hover={{ textDecoration: 'none' }}
+                      fontSize="1rem"
+                      color="black"
+                      fontWeight="600">
+                      Sign Out
+                    </Button>
                   </VStack>
                 </DrawerBody>
 
                 <DrawerFooter
+                  // bg="red"
+                  mt="2.5rem"
+                  zIndex={'1'}
                   display="flex"
                   justifyContent="center"
-                  pos="fixed"
-                  px="1rem"
-                  bottom={'2rem'}
-                  left={'0'}
-                  right="0">
+                  px="1rem">
                   {!user && (
                     <Button
-                      borderTop="1px solid #A3A3A1"
                       width="100%"
                       onClick={handleSignIn}
                       color="#066FE2"

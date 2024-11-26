@@ -24,6 +24,7 @@ import {
   Text,
   Textarea,
   useDisclosure,
+  useMediaQuery,
 } from '@chakra-ui/react'
 import '../styles/event_calendar.css'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
@@ -75,6 +76,8 @@ const Calendar = () => {
     fetchEvents()
   }, [])
 
+  const [isLargerThan671] = useMediaQuery('(min-width: 671px)')
+
   const renderEventContent = (eventInfo: any) => (
     <div
       style={{
@@ -82,12 +85,14 @@ const Calendar = () => {
         color: '#2E7D32',
         padding: '5px',
         borderRadius: '5px',
-        fontWeight: 'bold',
+        fontWeight: '400',
         textAlign: 'start',
-        width: '9.75rem',
+        width: isLargerThan671 ? '9.75rem' : '2.02rem',
         pointerEvents: 'none',
       }}>
-      <Text fontSize="sm">{eventInfo.event.title}</Text>
+      <Text fontSize="sm" isTruncated>
+        {eventInfo.event.title}
+      </Text>
     </div>
   )
 

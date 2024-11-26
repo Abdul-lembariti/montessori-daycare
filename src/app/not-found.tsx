@@ -7,7 +7,7 @@ import Parallax from 'parallax-js'
 import './404/not-found.css'
 
 export default function NotFound() {
-  const router = useRouter() // Use useRouter instead of useNavigate
+  const router = useRouter() 
 
   useEffect(() => {
     const scene = document.getElementById('scene')
@@ -17,7 +17,7 @@ export default function NotFound() {
   }, [])
 
   return (
-    <Box bg="#695681">
+    <Box bg="#FFFFFB">
       <section className="wrapper">
         <div className="container">
           <div id="scene" className="scene" data-hover-only="false">

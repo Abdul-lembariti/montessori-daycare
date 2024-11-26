@@ -49,7 +49,9 @@ const WhyUsScreen = () => {
   return (
     <>
       <Box
-        borderBottom='1px solid rgba(0, 0, 0, 0.35)' 
+        zIndex={2}
+        bg="#f2f2f2"
+        borderBottom="1px solid rgba(0, 0, 0, 0.35)"
         p={{ base: '1rem', md: '5.25rem' }}>
         <Box display="flex" flexDirection="column" gap="4rem">
           <Flex

@@ -658,10 +658,10 @@ const Gallery = () => {
                   onClick={() => handlePageChange(page - 1)}
                   rounded="full"
                   isDisabled={page === 1 || loading}
-                  icon={<ChevronLeftIcon />}
+                  icon={<Image src="/assets/icons/icons-left.svg" />}
                 />
                 <Text fontSize="1.15rem">
-                  {page} of {albums.length}
+                  {page} of {totalPages}
                 </Text>
 
                 <IconButton
@@ -671,7 +671,7 @@ const Gallery = () => {
                   onClick={() => handlePageChange(page + 1)}
                   rounded="full"
                   isDisabled={page === 1 || loading}
-                  icon={<ChevronRightIcon />}
+                  icon={<Image src="/assets/icons/icons-right.svg" />}
                 />
               </Box>
             )}

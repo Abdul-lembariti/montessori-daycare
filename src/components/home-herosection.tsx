@@ -27,6 +27,7 @@ const HomeHeroSection = () => {
   return (
     <>
       <Box
+        zIndex={-1}
         mt="3.5rem"
         bgImage={{
           base: '/assets/images/phoneHome.png',
@@ -125,14 +126,15 @@ const HomeHeroSection = () => {
             bg="linear-gradient(90deg, rgba(98, 155, 159, 0.85) 3%, rgba(119, 130, 175, 0.50) 100%)"
             width={{ base: '21rem', md: '28.2rem' }}
             p="1.5rem"
+            zIndex={-1}
             boxShadow="md"
             borderRadius="1rem"
             initial={
               isLargerThan671
-                ? { x: '100vw', opacity: 0 }
-                : { x: '-100vw', opacity: 0 }
+                ? { y: '50vh', opacity: 0 }
+                : { y: '50vh', opacity: 0 }
             }
-            animate={{ x: 0, opacity: 1 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{
               type: 'spring',
               stiffness: 20,

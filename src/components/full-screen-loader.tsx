@@ -2,7 +2,6 @@ import React from 'react'
 import { Box } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
-// Dynamically import the Player component from Lottie
 const Player = dynamic(
   () => import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
   { ssr: false }
