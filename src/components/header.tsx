@@ -251,6 +251,7 @@ const Header = () => {
                 display={isLargerThan671 ? 'none' : 'block'}
                 w="100%"
                 h="100%"
+                overflow="auto"
                 p="1rem">
                 <DrawerHeader>
                   <Flex justifyContent="space-between" align="center">
@@ -268,7 +269,7 @@ const Header = () => {
                     </Box>
                   </Flex>
                 </DrawerHeader>
-                <DrawerBody zIndex="2" px="0px">
+                <DrawerBody overflow="auto" zIndex="2" px="0px">
                   <Flex direction="column" align="center" mb={6}>
                     <Avatar
                       name={user?.displayName || 'Anonymous'}
