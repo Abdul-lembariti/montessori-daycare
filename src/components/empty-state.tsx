@@ -24,7 +24,10 @@ const EmptyState = ({ title, description }: IEmptyStateProps) => {
         fontWeight={{ base: '500', md: '600' }}>
         {title}
       </Text>
-      <Text fontSize={{ base: '0.875rem', md: '1.25rem' }} fontWeight="400">
+      <Text
+        textAlign="center"
+        fontSize={{ base: '0.875rem', md: '1.25rem' }}
+        fontWeight="400">
         {description}
       </Text>
     </Box>

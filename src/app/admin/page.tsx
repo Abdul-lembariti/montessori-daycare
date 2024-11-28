@@ -44,6 +44,8 @@ const AdminPage = () => {
         return false
       }
 
+      console.log(user)
+
       const userDoc = await getDocs(
         query(collection(Db, 'users'), where('uid', '==', user.uid))
       )
@@ -58,15 +60,17 @@ const AdminPage = () => {
     }
   }
 
+  console.log(verifyAdmin())
+
   useEffect(() => {
     const checkAccess = async () => {
       try {
-        await setPersistence(auth, browserLocalPersistence) // Ensure persistence
+        await setPersistence(auth, browserLocalPersistence)
         const isAdmin = await verifyAdmin()
         if (!isAdmin) {
-          router.push('/404') // Redirect to 404 page
+          router.push('/404')
         } else {
-          setAuthenticating(false) // Allow access
+          setAuthenticating(false)
         }
       } catch (error) {
         console.error('Error in authentication persistence:', error)
@@ -279,13 +283,14 @@ const AdminPage = () => {
               justify="space-between"
               align="center"
               p="1.5rem"
+              gap="0.5rem"
               border="1px solid #ddd"
               borderRadius="8px"
               boxShadow="0px 4px 6px -1px rgba(0, 0, 0, 0.10), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)"
               _hover={{
                 backgroundColor: 'gray.50',
               }}>
-              <Text fontSize="lg" fontWeight="semibold">
+              <Text fontSize={{ base: 'sm', md: 'lg' }} fontWeight="semibold">
                 {user.email}
               </Text>
               <Button
@@ -304,5 +309,3 @@ const AdminPage = () => {
 }
 
 export default AdminPage
-
-

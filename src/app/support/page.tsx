@@ -28,6 +28,7 @@ import { useEffect, useState } from 'react'
 import { SlMagnifier } from 'react-icons/sl'
 import HeroSection from '../../components/hero-section'
 import FullScreenLoader from '@/components/full-screen-loader'
+import EmptyState from '../../components/empty-state'
 
 const faqData = {
   gallery: [
@@ -283,106 +284,138 @@ export default function Support() {
                     <TabPanels width="60%">
                       <TabPanel>
                         <Accordion defaultIndex={[0]} allowMultiple>
-                          {getFaqs().map((faq, index) => (
-                            <AccordionItem
-                              key={index}
-                              mb="1rem"
-                              border="none"
-                              _hover={{ bg: 'transparent' }}>
-                              <h2>
-                                <AccordionButton _hover={{ bg: 'transparent' }}>
-                                  <Box
-                                    flex="1"
-                                    textAlign="left"
-                                    fontWeight="bold">
-                                    {faq.question}
-                                  </Box>
-                                  <AccordionIcon />
-                                </AccordionButton>
-                              </h2>
-                              <AccordionPanel pb={4} color="gray.600">
-                                {faq.answer}
-                              </AccordionPanel>
-                            </AccordionItem>
-                          ))}
+                          {getFaqs().length > 0 ? (
+                            getFaqs().map((faq, index) => (
+                              <AccordionItem
+                                key={index}
+                                mb="1rem"
+                                border="none"
+                                _hover={{ bg: 'transparent' }}>
+                                <h2>
+                                  <AccordionButton
+                                    _hover={{ bg: 'transparent' }}>
+                                    <Box
+                                      flex="1"
+                                      textAlign="left"
+                                      fontWeight="bold">
+                                      {faq.question}
+                                    </Box>
+                                    <AccordionIcon />
+                                  </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4} color="gray.600">
+                                  {faq.answer}
+                                </AccordionPanel>
+                              </AccordionItem>
+                            ))
+                          ) : (
+                            <EmptyState
+                              title="Not found"
+                              description="There’s nothing to display here right now. Feel free to contact us."
+                            />
+                          )}
                         </Accordion>
                       </TabPanel>
                       <TabPanel>
                         <Accordion defaultIndex={[0]} allowMultiple>
-                          {getFaqs().map((faq, index) => (
-                            <AccordionItem
-                              key={index}
-                              mb="1rem"
-                              border="none"
-                              _hover={{ bg: 'transparent' }}>
-                              <h2>
-                                <AccordionButton _hover={{ bg: 'transparent' }}>
-                                  <Box
-                                    flex="1"
-                                    textAlign="left"
-                                    fontWeight="bold">
-                                    {faq.question}
-                                  </Box>
-                                  <AccordionIcon />
-                                </AccordionButton>
-                              </h2>
-                              <AccordionPanel pb={4} color="gray.600">
-                                {faq.answer}
-                              </AccordionPanel>
-                            </AccordionItem>
-                          ))}
+                          {getFaqs().length > 0 ? (
+                            getFaqs().map((faq, index) => (
+                              <AccordionItem
+                                key={index}
+                                mb="1rem"
+                                border="none"
+                                _hover={{ bg: 'transparent' }}>
+                                <h2>
+                                  <AccordionButton
+                                    _hover={{ bg: 'transparent' }}>
+                                    <Box
+                                      flex="1"
+                                      textAlign="left"
+                                      fontWeight="bold">
+                                      {faq.question}
+                                    </Box>
+                                    <AccordionIcon />
+                                  </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4} color="gray.600">
+                                  {faq.answer}
+                                </AccordionPanel>
+                              </AccordionItem>
+                            ))
+                          ) : (
+                            <EmptyState
+                              title="Not found"
+                              description="There’s nothing to display here right now. Feel free to contact us."
+                            />
+                          )}
                         </Accordion>
                       </TabPanel>
                       <TabPanel>
                         <Accordion defaultIndex={[0]} allowMultiple>
-                          {getFaqs().map((faq, index) => (
-                            <AccordionItem
-                              key={index}
-                              mb="1rem"
-                              border="none"
-                              _hover={{ bg: 'transparent' }}>
-                              <h2>
-                                <AccordionButton _hover={{ bg: 'transparent' }}>
-                                  <Box
-                                    flex="1"
-                                    textAlign="left"
-                                    fontWeight="bold">
-                                    {faq.question}
-                                  </Box>
-                                  <AccordionIcon />
-                                </AccordionButton>
-                              </h2>
-                              <AccordionPanel pb={4} color="gray.600">
-                                {faq.answer}
-                              </AccordionPanel>
-                            </AccordionItem>
-                          ))}
+                          {getFaqs().length > 0 ? (
+                            getFaqs().map((faq, index) => (
+                              <AccordionItem
+                                key={index}
+                                mb="1rem"
+                                border="none"
+                                _hover={{ bg: 'transparent' }}>
+                                <h2>
+                                  <AccordionButton
+                                    _hover={{ bg: 'transparent' }}>
+                                    <Box
+                                      flex="1"
+                                      textAlign="left"
+                                      fontWeight="bold">
+                                      {faq.question}
+                                    </Box>
+                                    <AccordionIcon />
+                                  </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4} color="gray.600">
+                                  {faq.answer}
+                                </AccordionPanel>
+                              </AccordionItem>
+                            ))
+                          ) : (
+                            <EmptyState
+                              title="Not found"
+                              description="There’s nothing to display here right now. Feel free to contact us."
+                            />
+                          )}
                         </Accordion>
                       </TabPanel>
                       <TabPanel>
                         <Accordion defaultIndex={[0]} allowMultiple>
-                          {getFaqs().map((faq, index) => (
-                            <AccordionItem
-                              key={index}
-                              mb="1rem"
-                              border="none"
-                              _hover={{ bg: 'transparent' }}>
-                              <h2>
-                                <AccordionButton _hover={{ bg: 'transparent' }}>
-                                  <Box
-                                    flex="1"
-                                    textAlign="left"
-                                    fontWeight="bold">
-                                    {faq.question}
-                                  </Box>
-                                  <AccordionIcon />
-                                </AccordionButton>
-                              </h2>
-                              <AccordionPanel pb={4} color="gray.600">
-                                {faq.answer}
-                              </AccordionPanel>
-                            </AccordionItem>
-                          ))}
+                          {getFaqs().length > 0 ? (
+                            getFaqs().map((faq, index) => (
+                              <AccordionItem
+                                key={index}
+                                mb="1rem"
+                                border="none"
+                                _hover={{ bg: 'transparent' }}>
+                                <h2>
+                                  <AccordionButton
+                                    _hover={{ bg: 'transparent' }}>
+                                    <Box
+                                      flex="1"
+                                      textAlign="left"
+                                      fontWeight="bold">
+                                      {faq.question}
+                                    </Box>
+                                    <AccordionIcon />
+                                  </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4} color="gray.600">
+                                  {faq.answer}
+                                </AccordionPanel>
+                              </AccordionItem>
+                            ))
+                          ) : (
+                            <EmptyState
+                              title="Not found"
+                              description="There’s nothing to display here right now. Feel free to contact us."
+                            />
+                          )}
                         </Accordion>
                       </TabPanel>
                     </TabPanels>
@@ -435,7 +468,7 @@ export default function Support() {
                             <Box fontSize="1.125rem" fontWeight="600">
                               Phone Number:
                             </Box>
-                            <Text fontSize="1rem">+255 781 654 212</Text>
+                            <Text fontSize="1rem">+255 754 953 185</Text>
                           </Box>
                         </Box>
                       </VStack>
@@ -544,94 +577,134 @@ export default function Support() {
                 <TabPanels>
                   <TabPanel>
                     <Accordion defaultIndex={[0]} allowMultiple>
-                      {getFaqs().map((faq, index) => (
-                        <AccordionItem
-                          key={index}
-                          mb="1rem"
-                          border="none"
-                          _hover={{ bg: 'transparent' }}>
-                          <h2>
-                            <AccordionButton _hover={{ bg: 'transparent' }}>
-                              <Box flex="1" textAlign="left" fontWeight="bold">
-                                {faq.question}
-                              </Box>
-                              <AccordionIcon />
-                            </AccordionButton>
-                          </h2>
-                          <AccordionPanel pb={4} color="gray.600">
-                            {faq.answer}
-                          </AccordionPanel>
-                        </AccordionItem>
-                      ))}
+                      {getFaqs().length > 0 ? (
+                        getFaqs().map((faq, index) => (
+                          <AccordionItem
+                            key={index}
+                            mb="1rem"
+                            border="none"
+                            _hover={{ bg: 'transparent' }}>
+                            <h2>
+                              <AccordionButton _hover={{ bg: 'transparent' }}>
+                                <Box
+                                  flex="1"
+                                  textAlign="left"
+                                  fontWeight="bold">
+                                  {faq.question}
+                                </Box>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4} color="gray.600">
+                              {faq.answer}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        ))
+                      ) : (
+                        <EmptyState
+                          title="Not found"
+                          description="There’s nothing to display here right now. Feel free to contact us."
+                        />
+                      )}
                     </Accordion>
                   </TabPanel>
                   <TabPanel>
                     <Accordion defaultIndex={[0]} allowMultiple>
-                      {getFaqs().map((faq, index) => (
-                        <AccordionItem
-                          key={index}
-                          mb="1rem"
-                          border="none"
-                          _hover={{ bg: 'transparent' }}>
-                          <h2>
-                            <AccordionButton _hover={{ bg: 'transparent' }}>
-                              <Box flex="1" textAlign="left" fontWeight="bold">
-                                {faq.question}
-                              </Box>
-                              <AccordionIcon />
-                            </AccordionButton>
-                          </h2>
-                          <AccordionPanel pb={4} color="gray.600">
-                            {faq.answer}
-                          </AccordionPanel>
-                        </AccordionItem>
-                      ))}
+                      {getFaqs().length > 0 ? (
+                        getFaqs().map((faq, index) => (
+                          <AccordionItem
+                            key={index}
+                            mb="1rem"
+                            border="none"
+                            _hover={{ bg: 'transparent' }}>
+                            <h2>
+                              <AccordionButton _hover={{ bg: 'transparent' }}>
+                                <Box
+                                  flex="1"
+                                  textAlign="left"
+                                  fontWeight="bold">
+                                  {faq.question}
+                                </Box>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4} color="gray.600">
+                              {faq.answer}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        ))
+                      ) : (
+                        <EmptyState
+                          title="Not found"
+                          description="There’s nothing to display here right now. Feel free to contact us."
+                        />
+                      )}
                     </Accordion>
                   </TabPanel>
                   <TabPanel>
                     <Accordion defaultIndex={[0]} allowMultiple>
-                      {getFaqs().map((faq, index) => (
-                        <AccordionItem
-                          key={index}
-                          mb="1rem"
-                          border="none"
-                          _hover={{ bg: 'transparent' }}>
-                          <h2>
-                            <AccordionButton _hover={{ bg: 'transparent' }}>
-                              <Box flex="1" textAlign="left" fontWeight="bold">
-                                {faq.question}
-                              </Box>
-                              <AccordionIcon />
-                            </AccordionButton>
-                          </h2>
-                          <AccordionPanel pb={4} color="gray.600">
-                            {faq.answer}
-                          </AccordionPanel>
-                        </AccordionItem>
-                      ))}
+                      {getFaqs().length > 0 ? (
+                        getFaqs().map((faq, index) => (
+                          <AccordionItem
+                            key={index}
+                            mb="1rem"
+                            border="none"
+                            _hover={{ bg: 'transparent' }}>
+                            <h2>
+                              <AccordionButton _hover={{ bg: 'transparent' }}>
+                                <Box
+                                  flex="1"
+                                  textAlign="left"
+                                  fontWeight="bold">
+                                  {faq.question}
+                                </Box>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4} color="gray.600">
+                              {faq.answer}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        ))
+                      ) : (
+                        <EmptyState
+                          title="Not found"
+                          description="There’s nothing to display here right now. Feel free to contact us."
+                        />
+                      )}
                     </Accordion>
                   </TabPanel>
                   <TabPanel>
                     <Accordion defaultIndex={[0]} allowMultiple>
-                      {getFaqs().map((faq, index) => (
-                        <AccordionItem
-                          key={index}
-                          mb="1rem"
-                          border="none"
-                          _hover={{ bg: 'transparent' }}>
-                          <h2>
-                            <AccordionButton _hover={{ bg: 'transparent' }}>
-                              <Box flex="1" textAlign="left" fontWeight="bold">
-                                {faq.question}
-                              </Box>
-                              <AccordionIcon />
-                            </AccordionButton>
-                          </h2>
-                          <AccordionPanel pb={4} color="gray.600">
-                            {faq.answer}
-                          </AccordionPanel>
-                        </AccordionItem>
-                      ))}
+                      {getFaqs().length > 0 ? (
+                        getFaqs().map((faq, index) => (
+                          <AccordionItem
+                            key={index}
+                            mb="1rem"
+                            border="none"
+                            _hover={{ bg: 'transparent' }}>
+                            <h2>
+                              <AccordionButton _hover={{ bg: 'transparent' }}>
+                                <Box
+                                  flex="1"
+                                  textAlign="left"
+                                  fontWeight="bold">
+                                  {faq.question}
+                                </Box>
+                                <AccordionIcon />
+                              </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4} color="gray.600">
+                              {faq.answer}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        ))
+                      ) : (
+                        <EmptyState
+                          title="Not found"
+                          description="There’s nothing to display here right now. Feel free to contact us."
+                        />
+                      )}
                     </Accordion>
                   </TabPanel>
                 </TabPanels>
@@ -645,6 +718,7 @@ export default function Support() {
 
               <Stack px="1rem">
                 <Box
+                  mb="5rem"
                   mt="2rem"
                   p="1.5rem"
                   borderRadius="1.5rem"
@@ -691,7 +765,7 @@ export default function Support() {
                         <Box fontSize="0.875rem" fontWeight="600">
                           Phone Number:
                         </Box>
-                        <Text fontSize="0.875rem">+255 781 654 212</Text>
+                        <Text fontSize="0.875rem">+255 754 953 185</Text>
                       </Box>
                     </Box>
                   </VStack>

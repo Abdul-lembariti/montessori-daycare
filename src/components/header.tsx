@@ -155,7 +155,6 @@ const Header = () => {
                           as={Button}
                           rightIcon={<GoChevronDown />}
                           variant="unstyled"
-                          // Check if the current path starts with "/daycare" to mark it active
                           color={
                             pathname?.startsWith('/daycare/staff')
                               ? '#066FE2'
@@ -255,16 +254,21 @@ const Header = () => {
                 p="1rem">
                 <DrawerHeader>
                   <Flex justifyContent="space-between" align="center">
-                    <Link _hover={{ textDecoration: 'none' }} href="/">
+                    <Link
+                      _hover={{ textDecoration: 'none' }}
+                      _focus={{ outline: 'none' }}
+                      href="/">
                       <Image src="/assets/icons/main-logo.svg" alt="Logo" />
                     </Link>
                     <Text
                       _hover={{ textDecoration: 'none' }}
+                      _focus={{ outline: 'none' }}
                       fontWeight="700"
                       fontSize="1.25rem">
                       Sauti Ya Mtoto
                     </Text>
-                    <Box onClick={onClose}>
+                    <Box onClick={onClose} _focus={{ outline: 'none' }}
+                    >
                       <Image src="/assets/icons/close-icon.svg" alt="Close" />
                     </Box>
                   </Flex>

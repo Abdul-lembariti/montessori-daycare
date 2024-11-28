@@ -20,8 +20,7 @@ const staffData = [
     p1: 'Martha Patrick Dello, the Founder and Principal of our Montessori kindergarten, brings a passion for transformative education and a wealth of experience to our community. ',
     p2: 'With a background in education, including a Bachelors degree and certifications in Montessori pedagogy, Martha is dedicated to creating a nurturing environment that aligns with Montessori principles.',
     p3: 'Her commitment to respect, empathy, and individualized learning shapes our kindergartens approach and ensures a positive and enriching experience for all children',
-    description:
-      'Martha Patrick Dello, the Founder and Principal of our Montessori kindergarten, brings a passion for transformative education and a wealth of experience to our community.  With a background in education, including a Bachelors degree and certifications in Montessori pedagogy, Martha is dedicated to creating a nurturing environment',
+
     image: '/assets/images/image1.png',
   },
   {
@@ -30,8 +29,7 @@ const staffData = [
     p1: 'Kelvin Manamba collaborates with our Montessori kindergarten as a Biomedical Consultant, contributing to the effective management and maintenance of our education tools and equipment.',
     p2: 'Currently completing his bachelor’s degree in the same field, Kelvin’s entrepreneuerial spirit and love for arts resonate with our emphasis on creativity and independent learning. ',
     p3: 'Passionate about music, Kelvin occasionally shares his skills with our community enriching our enviroment with diverse and harmonious experiences.',
-    description:
-      'Kelvin Manamba collaborates with our Montessori kindergarten as a Biomedical Consultant, contributing to the effective management and maintenance of our education tools and equipment. Currently completing his bachelor’s degree in the same field, Kelvin’s entrepreneuerial spirit and love for arts resonate with our emphasis on creativity and independent learning. Passionate about music, Kelvin occasionally shares his skills with our community enriching our enviroment with diverse and harmonious experiences.',
+
     image: '/assets/images/image2.png',
   },
   {
@@ -40,28 +38,25 @@ const staffData = [
     p1: 'Amos Moses Sumari, an artist and educator from Arusha, Tanzania collaborates with our montessori to bring creativity and cultural enrichment to our community.',
     p2: 'With a diploma in pre and primary education and advancement skills in graphics design and fine art, Amos guides our children in exploring artistic expression through various media.',
     p3: 'His art work, inspired by global cultures, aligns with our Montessorii values of fostering a diverse and inclusive learning enviroment ',
-    description:
-      'Amos Moses Sumari, an artist and educator from Arusha, Tanzania collaborates with our montessori to bring creativity and cultural enrichment to our community. With a diploma in pre and primary education and advancement skills in graphics design and fine art, Amos guides our children in exploring artistic expression through various media. His art work, inspired by global cultures, aligns with our Montessorii values of fostering a diverse and inclusivelearningenviroment',
+
     image: '/assets/images/image3.png',
   },
   {
     name: 'Victoria Dawite',
-    role: 'Montessori Director/Guide',
+    role: 'Montessori Directress',
     p1: 'Victoria is a guide and committed to provide holistic and child centered education in our kindergarten.',
     p2: 'Holding a certification in Montessori pedagogy, Victoria ensures our kindergarten upholds the Montessori principles of respect, empathy and individualized learning.',
     p3: 'Victoria is dedicated to creating a nurturing enviroment that aligns with Montessori principles. Her commitment to respect, empathy and individualized learning shapes our kindergarten’s approach and ensures a positive and enriching experience for all children',
-    description:
-      'Victoria is a guide and committed to provide holistic and child centered education in our kindergarten Holding a certification in Montessori pedagogy, Victoria ensures our kindergarten upholds the Montessori principles of respect,empathy and individualized learning.Victoria is dedicated to creating a nurturing enviroment that aligns with Montessori principles. Her commitment to respect, empathy and individualized learning shapes our kindergarten’s approach and ensures a positive and enriching experience for allchildren',
+
     image: '/assets/images/image5.png',
   },
   {
     name: 'Antonia Emanuel Msofe',
-    role: 'Montessori Director/Guide',
+    role: 'Montessori Directress',
     p1: 'Antonia is a guide and committed to provide holistic and child centered education in our kindergarten.',
     p2: 'Holding a certification in Montessori pedagogy, Antonia ensures our kindergarten upholds the Montessori principles of respect, empathy and individualized learning.',
     p3: 'Antonia is dedicated to creating a nurturing enviroment that aligns with Montessori principles. Her commitment to respect, empathy and individualized learning shapes our kindergarten’s approach and ensures a positive and enriching experience for all children',
-    description:
-      'Antonia is a guide and committed to provide holistic and child centered education in our kindergarten. Holding a certification in Montessori pedagogy, Antonia ensures our kindergarten upholds the Montessori principles of respect, empathy and individualized learning .Antonia is dedicated to creating a nurturing enviroment that aligns with Montessori principles. Her commitment to respect, empathy and individualized learning shapes our kindergarten’s approach and ensures a positive and enriching experience for all children',
+
     image: '/assets/images/image4.png',
   },
 ]
@@ -109,7 +104,7 @@ const StaffCard = ({ name, role, image, reverseImage, p1, p2, p3 }: any) => (
         mt={{ base: '-3rem', md: '-5grem' }}
         top="-3rem"
         bgSize="cover"
-        bgPosition={{base:"top"}}
+        bgPosition={{ base: 'top' }}
         borderRadius={{ base: '1rem', md: '0' }}
         boxShadow="lg"
       />

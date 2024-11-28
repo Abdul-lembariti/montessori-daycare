@@ -143,6 +143,7 @@ const NewsAndUpdatePage = () => {
         })) as INewsArticle[]
 
         setNewsArticles(articles)
+        setFilteredArticles(articles)
         setLastVisible(querySnapshot.docs[querySnapshot.docs.length - 1])
         setIsScreenLoading(false)
       } catch (error) {
@@ -166,9 +167,16 @@ const NewsAndUpdatePage = () => {
     }
   }
 
+  useEffect(() => {
+    const filtered = newsArticles.filter((article) =>
+      article.articleName.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFilteredArticles(filtered)
+  }, [searchTerm, newsArticles])
+
   const totalPages = Math.ceil(newsArticles.length / articlesPerPage)
 
-  const currentArticles = newsArticles.slice(
+  const currentArticles = filteredArticles.slice(
     page * articlesPerPage,
     (page + 1) * articlesPerPage
   )
@@ -286,119 +294,126 @@ achievements from our Montessori community."
                           <Text fontSize="1.875rem" fontWeight="600">
                             All News
                           </Text>
-                          {currentArticles.map((article) => (
-                            <Card
-                              key={article.id}
-                              mt="2.5rem"
-                              borderRadius="24px"
-                              pos="relative">
-                              <CardBody p="0px">
-                                {isAdmin && (
-                                  <Menu>
-                                    <MenuButton
-                                      as={IconButton}
-                                      pos="absolute"
-                                      top="1rem"
-                                      right="1rem"
-                                      isRound={true}
-                                      variant="solid"
-                                      bg="white"
-                                      aria-label="Options"
-                                      fontSize="20px"
-                                      icon={
-                                        <Image src="/assets/icons/ellipsis.svg" />
-                                      }
-                                    />
-                                    <MenuList>
-                                      <MenuItem
-                                        key={article.id}
-                                        onClick={() => handleEdit(article)}>
-                                        Edit
-                                      </MenuItem>
-                                      <MenuItem
-                                        onClick={() =>
-                                          handleDelete(article.id)
-                                        }>
-                                        Delete
-                                      </MenuItem>
-                                    </MenuList>
-                                  </Menu>
-                                )}
-                                <Image
-                                  src={article.thumbnail}
-                                  alt={article.articleName}
-                                  borderTopRadius="24px"
-                                  maxH="25rem"
-                                  w="100%"
-                                />
-                                {/* <Box
-                       bgImage="url('/assets/images/about-us-kid.png')"
-                       bgSize="cover"
-                       bgPosition="center"
-                       borderTopRadius="24px"
-                       maxH="25rem"
-                       h="100%"
-                       w="100%"
-                     /> */}
+                          {currentArticles.length > 0 ? (
+                            currentArticles.map((article) => (
+                              <Card
+                                key={article.id}
+                                mt="2.5rem"
+                                borderRadius="24px"
+                                pos="relative">
+                                <CardBody p="0px">
+                                  {isAdmin && (
+                                    <Menu>
+                                      <MenuButton
+                                        as={IconButton}
+                                        pos="absolute"
+                                        top="1rem"
+                                        right="1rem"
+                                        isRound={true}
+                                        variant="solid"
+                                        bg="white"
+                                        aria-label="Options"
+                                        fontSize="20px"
+                                        icon={
+                                          <Image src="/assets/icons/ellipsis.svg" />
+                                        }
+                                      />
+                                      <MenuList>
+                                        <MenuItem
+                                          key={article.id}
+                                          onClick={() => handleEdit(article)}>
+                                          Edit
+                                        </MenuItem>
+                                        <MenuItem
+                                          onClick={() =>
+                                            handleDelete(article.id)
+                                          }>
+                                          Delete
+                                        </MenuItem>
+                                      </MenuList>
+                                    </Menu>
+                                  )}
+                                  <Image
+                                    src={article.thumbnail}
+                                    alt={article.articleName}
+                                    borderTopRadius="24px"
+                                    maxH="25rem"
+                                    w="100%"
+                                  />
+                                  {/* <Box
+                         bgImage="url('/assets/images/about-us-kid.png')"
+                         bgSize="cover"
+                         bgPosition="center"
+                         borderTopRadius="24px"
+                         maxH="25rem"
+                         h="100%"
+                         w="100%"
+                       /> */}
 
-                                <Stack px="1.5rem" mt="2rem" spacing="3">
-                                  <Text fontSize="1.125rem" fontWeight="600">
-                                    {article.articleName}
-                                  </Text>
-
-                                  <Text
-                                    fontSize="1rem"
-                                    fontWeight="400"
-                                    noOfLines={3}>
-                                    {article.articleContent.replace(
-                                      /<\/?[^>]+(>|$)/g,
-                                      ''
-                                    )}
-                                  </Text>
-                                </Stack>
-                              </CardBody>
-                              <CardFooter
-                                px="1.5rem"
-                                pb="1.5rem"
-                                display="flex"
-                                justifyContent="space-between">
-                                <Flex gap="1.5rem" w="100%">
-                                  <Flex
-                                    alignItems="center"
-                                    justifyContent="center"
-                                    gap="0.75rem">
-                                    <Image src="assets/icons/calendar.svg" />
-                                    <Text fontSize="1rem" fontWeight="500">
-                                      {new Date(
-                                        article.createdAt.toDate()
-                                      ).toLocaleDateString()}
+                                  <Stack px="1.5rem" mt="2rem" spacing="3">
+                                    <Text fontSize="1.125rem" fontWeight="600">
+                                      {article.articleName}
                                     </Text>
+
+                                    <Text
+                                      fontSize="1rem"
+                                      fontWeight="400"
+                                      noOfLines={3}>
+                                      {article.articleContent.replace(
+                                        /<\/?[^>]+(>|$)/g,
+                                        ''
+                                      )}
+                                    </Text>
+                                  </Stack>
+                                </CardBody>
+                                <CardFooter
+                                  px="1.5rem"
+                                  pb="1.5rem"
+                                  display="flex"
+                                  justifyContent="space-between">
+                                  <Flex gap="1.5rem" w="100%">
+                                    <Flex
+                                      alignItems="center"
+                                      justifyContent="center"
+                                      gap="0.75rem">
+                                      <Image src="assets/icons/calendar.svg" />
+                                      <Text fontSize="1rem" fontWeight="500">
+                                        {new Date(
+                                          article.createdAt.toDate()
+                                        ).toLocaleDateString()}
+                                      </Text>
+                                    </Flex>
                                   </Flex>
-                                </Flex>
-                                <Button
-                                  rightIcon={
-                                    <Image src="assets/icons/chev-right.svg" />
-                                  }
-                                  px={{ base: '1.75rem', md: '1.5rem' }}
-                                  gap="0.5rem"
-                                  h={{ base: '2rem', md: '3rem' }}
-                                  fontSize={{ base: '0.75rem', md: '1rem' }}
-                                  fontWeight={{ base: '500', md: '600' }}
-                                  colorScheme="none"
-                                  color="#066FE2"
-                                  w={{ base: '7.0625rem', md: '10.125rem' }}
-                                  borderRadius="0.375rem"
-                                  onClick={() =>
-                                    router.push(
-                                      `/news-and-updates/${article.id}`
-                                    )
-                                  }
-                                  border="1px solid #066FE2">
-                                  Read More
-                                </Button>
-                              </CardFooter>
-                            </Card>
-                          ))}
+                                  <Button
+                                    rightIcon={
+                                      <Image src="assets/icons/chev-right.svg" />
+                                    }
+                                    px={{ base: '1.75rem', md: '1.5rem' }}
+                                    gap="0.5rem"
+                                    h={{ base: '2rem', md: '3rem' }}
+                                    fontSize={{ base: '0.75rem', md: '1rem' }}
+                                    fontWeight={{ base: '500', md: '600' }}
+                                    colorScheme="none"
+                                    color="#066FE2"
+                                    w={{ base: '7.0625rem', md: '10.125rem' }}
+                                    borderRadius="0.375rem"
+                                    onClick={() =>
+                                      router.push(
+                                        `/news-and-updates/${article.id}`
+                                      )
+                                    }
+                                    border="1px solid #066FE2">
+                                    Read More
+                                  </Button>
+                                </CardFooter>
+                              </Card>
+                            ))
+                          ) : (
+                            <EmptyState
+                              title="No Articles Available"
+                              description="No articles in this category at the moment."
+                            />
+                          )}
                           <Flex
                             justifyContent="center"
                             gap="1.2rem"

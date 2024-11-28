@@ -57,6 +57,7 @@ import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { GoCodescanCheckmark } from 'react-icons/go'
 import HeroSection from '../../components/hero-section'
 import FullScreenLoader from '@/components/full-screen-loader'
+import EmptyState from '../../components/empty-state'
 
 interface Album {
   id: string
@@ -630,18 +631,10 @@ const Gallery = () => {
                 ))}
               </Grid>
             ) : (
-              <Center>
-                <Box
-                  mt="2rem"
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="center">
-                  <Image src="/assets/icons/cuate.svg" />
-                  <Text fontSize="1.9rem" fontWeight="600">
-                    Oops! You have no news
-                  </Text>
-                </Box>
-              </Center>
+              <EmptyState
+                title="Oops! You have no news"
+                description="There are no news at the moment"
+              />
             )}
 
             {filteredAlbums.length > 0 && (
