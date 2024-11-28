@@ -86,8 +86,8 @@ const DiscoverHome = () => {
         ref={section1Ref}
         className={`section ${section1InView ? 'visible' : ''}`}
         display="flex"
-        height={{ base: '100%', md: '100vh' }}
-        mb={{ base: '0rem', md: '5rem' }}
+        height={{ base: '100%', md: '85vh' }}
+        // mb={{ base: '0rem', md: '5rem' }}
         flexDir={{ base: 'column', md: 'row' }}
         gap={{ base: '5rem', md: '5.25rem' }}
         justifyContent={{ base: 'center', md: 'space-between' }}>
@@ -146,7 +146,7 @@ const DiscoverHome = () => {
         ref={section2Ref}
         className={`section ${section2InView ? 'visible' : ''}`}
         display="flex"
-        height={{ base: '30rem', md: '70vh' }}
+        height={{ base: '30rem', md: '85vh' }}
         alignItems="center"
         flexDir={{ base: 'column', md: 'row' }}
         gap={{ base: '0rem', md: '5.25rem' }}

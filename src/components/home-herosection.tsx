@@ -22,7 +22,7 @@ const HomeHeroSection = () => {
   const navigate = useRouter()
   const [isLargerThan671] = useMediaQuery('(min-width: 671px)')
   const handleNextPage = () => {
-    navigate.push(`/admission`)
+    navigate.push(`/admission/`)
   }
   return (
     <>

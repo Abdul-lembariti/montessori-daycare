@@ -34,6 +34,7 @@ type NewsItem = {
 const NewsandupdatesHomePage = () => {
   const [news, setNews] = useState<NewsItem[]>([])
   const [hoveredIndex, setHoveredIndex] = useState(0)
+  const [imageOpacity, setImageOpacity] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLargerThan671] = useMediaQuery('(min-width: 671px)')
   const navigate = useRouter()
@@ -108,28 +109,45 @@ const NewsandupdatesHomePage = () => {
                 gap="0.9rem"
                 marginBottom="1.23rem"
                 padding="0.625rem"
-                transition="all .3s ease">
+                transition="all 3s ease">
                 <Box
                   width="5.75rem"
                   height="5.75rem"
-                  border="2px solid #066FE2"
                   borderRadius="full"
                   display="flex"
                   alignItems="center"
-                  justifyContent="center">
+                  justifyContent="center"
+                  position="relative">
                   <Image
-                    src={
-                      hoveredIndex === index
-                        ? '/assets/icons/bluehand.svg'
-                        : '/assets/icons/hand.svg'
-                    }
+                    src="/assets/icons/hand.svg"
+                    alt="hand icon"
+                    transition="opacity 1s ease-in-out"
+                    opacity={hoveredIndex === index ? 0 : 1}
+                    position="absolute"
+                    width="100%"
+                    height="100%"
+                    objectFit="contain"
+                  />
+
+                  <Image
+                    src="/assets/icons/bluehand.svg"
+                    alt="blue hand icon"
+                    transition="opacity 1s ease-in-out"
+                    opacity={hoveredIndex === index ? 1 : 0}
+                    position="absolute"
+                    width="100%"
+                    height="100%"
+                    objectFit="contain"
                   />
                 </Box>
-                <Box maxW="18rem">
-                  <Text noOfLines={1}>
+
+                <Box width="100%">
+                  <Text fontWeight="500" fontSize="1.5rem" noOfLines={1}>
                     {item.articleName.substring(0, 20)}...
                   </Text>
                   <Text
+                    fontWeight="400"
+                    color="rgba(0, 0, 0, 0.75)"
                     noOfLines={2}
                     dangerouslySetInnerHTML={{
                       __html: item.articleContent,
@@ -139,16 +157,18 @@ const NewsandupdatesHomePage = () => {
               </Box>
             ))}
           </Box>
+
           <Box>
             {news[hoveredIndex] && (
               <Box display="flex" alignItems="center" justifyContent="center">
                 <Image
                   src={news[hoveredIndex].thumbnail}
-                  alt="News preview"
+                  alt=""
                   width="100%"
                   height="25.56rem"
                   objectFit="cover"
                   borderRadius="1rem"
+                  transition="opacity 2s ease-in-out"
                 />
               </Box>
             )}
@@ -165,12 +185,16 @@ const NewsandupdatesHomePage = () => {
                 margin="1.25rem"
                 padding="0.5rem"
                 cursor="pointer"
-                transition="all .3s ease">
-                <Box width="100%" maxW="18rem">
-                  <Text noOfLines={1}>
+                transition="all 3s ease">
+                <Box width="100%">
+                  <Text fontWeight="500" fontSize="1.5rem" noOfLines={1}>
                     {item.articleName.substring(0, 20)}...
                   </Text>
-                  <Text fontSize="1rem" fontWeight="400" noOfLines={3}>
+                  <Text
+                    fontSize="1rem"
+                    fontWeight="400"
+                    color="rgba(0, 0, 0, 0.75)"
+                    noOfLines={2}>
                     {item.articleContent.replace(/<\/?[^>]+(>|$)/g, '')}
                   </Text>
                 </Box>
@@ -178,18 +202,31 @@ const NewsandupdatesHomePage = () => {
                 <Box
                   width="5.75rem"
                   height="5.75rem"
-                  border="2px solid #066FE2"
                   borderRadius="full"
                   display="flex"
                   alignItems="center"
-                  justifyContent="center">
+                  justifyContent="center"
+                  position="relative">
                   <Image
+                    src="/assets/icons/hand.svg"
+                    alt="hand icon"
+                    transition="opacity 1s ease-in-out"
+                    opacity={hoveredIndex === index + leftColumn.length ? 0 : 1}
+                    position="absolute"
+                    width="100%"
+                    height="100%"
                     objectFit="contain"
-                    src={
-                      hoveredIndex === index + leftColumn.length
-                        ? '/assets/icons/bluehand.svg'
-                        : '/assets/icons/hand.svg'
-                    }
+                  />
+
+                  <Image
+                    src="/assets/icons/bluehand.svg"
+                    alt="blue hand icon"
+                    transition="opacity 1s ease-in-out"
+                    opacity={hoveredIndex === index + leftColumn.length ? 1 : 0}
+                    position="absolute"
+                    width="100%"
+                    height="100%"
+                    objectFit="contain"
                   />
                 </Box>
               </Box>

@@ -43,12 +43,22 @@ import {
   deleteDoc,
   query,
   where,
+  orderBy,
 } from 'firebase/firestore'
 import { auth, Db } from '../../../firebaseConfig'
 import FullScreenLoader from '@/components/full-screen-loader'
 import EmptyState from '../../../components/empty-state'
 import { FiMapPin } from 'react-icons/fi'
 import DeleteConfirmationModal from '../../../components/deleteModal'
+
+interface Event {
+  id: string
+  date: string
+  eventName: string
+  description: string
+  location: string
+  collaborators: string[]
+}
 
 const EventsScreen = () => {
   const [events, setEvents] = useState<any[]>([])
@@ -142,6 +152,7 @@ const EventsScreen = () => {
           color: '#2D3748',
         },
       })
+      closeDrawer()
     } catch (error) {
       console.error('Error deleting event:', error)
       alert('Failed to delete event')
@@ -151,7 +162,9 @@ const EventsScreen = () => {
   const fetchEvents = async () => {
     const eventsCollection = collection(Db, 'events')
     try {
-      const querySnapshot = await getDocs(eventsCollection)
+      const querySnapshot = await getDocs(
+        query(eventsCollection, orderBy('date', 'desc'))
+      )
       const eventsData: any[] = []
       querySnapshot.forEach((doc) => {
         eventsData.push({ ...doc.data(), id: doc.id })
@@ -247,24 +260,26 @@ const EventsScreen = () => {
 
   const isFullHeight = useBreakpointValue({ base: false, md: true })
 
+  const groupedEvents: Record<string, Event[]> = {}
+  for (const event of events) {
+    const eventYear = new Date(event.date).getFullYear().toString()
+    if (!groupedEvents[eventYear]) {
+      groupedEvents[eventYear] = []
+    }
+    groupedEvents[eventYear].push(event)
+  }
+
   return (
     <>
       {isScreenLoading ? (
         <FullScreenLoader />
       ) : (
-        <Box
-          display="flex"
-          width="100%"
-          flexDirection="column"
-          gap="2.5rem"
-          mt="2.25rem">
-          {events.length === 0 ? (
-            <EmptyState
-              title={'Oops! You have no events'}
-              description={'There are no events at the moment.'}
-            />
-          ) : (
-            events.map((event) => (
+        Object.keys(groupedEvents).map((year) => (
+          <Box display="flex" flexDir="column" gap="2rem" key={year} mb="3rem">
+            <Text fontSize={{ base: '1.25rem', md: '2.5rem' }} fontWeight="500">
+              {year}
+            </Text>
+            {groupedEvents[year].map((event) => (
               <Card
                 bg="white"
                 key={event.id}
@@ -329,8 +344,11 @@ const EventsScreen = () => {
                       textOverflow="ellipsis">
                       {event.description}
                     </Text>
-                    <Box display="flex" gap="1rem" alignItems="center">
-                      <Image src="/assets/icons/location-05.svg" />{' '}
+                    <Box
+                      display="flex"
+                      gap={{ base: '0.25rem', md: '1rem' }}
+                      alignItems="center">
+                      <Image src="/assets/icons/location-05.svg" />
                       <Text fontSize={{ base: '0.75rem', md: '1rem' }}>
                         {event.location}
                       </Text>
@@ -339,23 +357,21 @@ const EventsScreen = () => {
                       <Box display="flex" gap="0.5rem">
                         {event.collaborators &&
                         event.collaborators.length > 0 ? (
-                          event.collaborators.map(
-                            (collaborator: any, index: any) => (
-                              <Tag
-                                size={{ base: '3.8rem', md: '5.75rem' }}
-                                padding="0.25rem"
-                                key={index}
-                                variant="solid"
-                                color="black"
-                                bg="#E2EEFB">
-                                <TagLabel
-                                  fontSize={{ base: '0.75rem', md: '1rem' }}
-                                  fontWeight={{ base: '400' }}>
-                                  {collaborator}
-                                </TagLabel>
-                              </Tag>
-                            )
-                          )
+                          event.collaborators.map((collaborator, index) => (
+                            <Tag
+                              size={{ base: '3.8rem', md: '5.75rem' }}
+                              padding="0.25rem"
+                              key={index}
+                              variant="solid"
+                              color="black"
+                              bg="#E2EEFB">
+                              <TagLabel
+                                fontSize={{ base: '0.75rem', md: '1rem' }}
+                                fontWeight="400">
+                                {collaborator}
+                              </TagLabel>
+                            </Tag>
+                          ))
                         ) : (
                           <Text>No collaborators</Text>
                         )}
@@ -364,9 +380,9 @@ const EventsScreen = () => {
                   </CardBody>
                 </Stack>
               </Card>
-            ))
-          )}
-        </Box>
+            ))}
+          </Box>
+        ))
       )}
 
       <Drawer
@@ -392,35 +408,9 @@ const EventsScreen = () => {
 
           <DrawerBody>
             <Stack spacing="1.5rem">
-              {/* <Box> */}
-              {/* <FormLabel>Event's Name</FormLabel> */}
-              {/* <Input
-                  value={selectedEvent?.eventName || ''}
-                  placeholder="Please enter your Event's name"
-                  onChange={(e) =>
-                    setSelectedEvent({
-                      ...selectedEvent,
-                      eventName: e.target.value,
-                    })
-                  }
-                /> */}
-              {/* <Text>{selectedEvent?.eventName}</Text> */}
-              {/* </Box> */}
-
               <Box>
                 <FormLabel color="rgba(0, 0, 0, 0.64)">Time</FormLabel>
                 <Stack direction="row" spacing="2" alignItems="center">
-                  {/* <Input
-                    value={selectedEvent?.startTime || ''}
-                    placeholder="HH:MM"
-                    type="time"
-                    onChange={(e) =>
-                      setSelectedEvent({
-                        ...selectedEvent,
-                        startTime: e.target.value,
-                      })
-                    }
-                  /> */}
                   <Text color="rgba(0, 0, 0, 0.85)">
                     {selectedEvent?.startTime}
                   </Text>
@@ -428,45 +418,18 @@ const EventsScreen = () => {
                   <Text color="rgba(0, 0, 0, 0.85)">
                     {selectedEvent?.endTime}
                   </Text>
-                  {/* <Input
-                    value={selectedEvent?.endTime || ''}
-                    placeholder="HH:MM"
-                    type="time"
-                    onChange={(e) =>
-                      setSelectedEvent({
-                        ...selectedEvent,
-                        endTime: e.target.value,
-                      })
-                    }
-                  /> */}
                 </Stack>
               </Box>
 
               <Box>
                 <FormLabel color="rgba(0, 0, 0, 0.64)">Date</FormLabel>
-                {/* <Input
-                  value={selectedEvent?.date || ''}
-                  placeholder="DD.MM.YYYY"
-                  type="date"
-                  onChange={(e) =>
-                    setSelectedEvent({ ...selectedEvent, date: e.target.value })
-                  }
-                /> */}
+
                 <Text color="rgba(0, 0, 0, 0.85)">{selectedEvent?.date}</Text>
               </Box>
 
               <Box>
                 <FormLabel color="rgba(0, 0, 0, 0.64)">Description</FormLabel>
-                {/* <Textarea
-                  value={selectedEvent?.description || ''}
-                  placeholder="Please write event's description"
-                  onChange={(e) =>
-                    setSelectedEvent({
-                      ...selectedEvent,
-                      description: e.target.value,
-                    })
-                  }
-                /> */}
+
                 <Text
                   color="rgba(0, 0, 0, 0.85)"
                   fontSize="1.125rem"
@@ -477,21 +440,7 @@ const EventsScreen = () => {
 
               <Box>
                 <FormLabel color="rgba(0, 0, 0, 0.64)">Location</FormLabel>
-                {/* <InputGroup>
-                  <Input
-                    value={selectedEvent?.location || ''}
-                    placeholder="Choose Location"
-                    onChange={(e) =>
-                      setSelectedEvent({
-                        ...selectedEvent,
-                        location: e.target.value,
-                      })
-                    }
-                  />
-                  <InputRightElement bg="#EDF2F7">
-                    <FiMapPin color="black" />
-                  </InputRightElement>
-                </InputGroup> */}
+
                 <Text
                   color="rgba(0, 0, 0, 0.85)"
                   fontSize="1rem"
@@ -503,37 +452,6 @@ const EventsScreen = () => {
               <Box>
                 <FormLabel color="rgba(0, 0, 0, 0.64)">Collaborators</FormLabel>
 
-                {/* <Menu>
-                  <MenuButton
-                    as={Select}
-                    placeholder="Add collaborator's name"
-                    cursor="pointer"
-                    _hover={{ bg: 'gray.100' }}>
-                    Add collaborator's name
-                  </MenuButton>
-                  <MenuList mt="1" maxW="31.5rem" w="100%">
-                    {['Parents', 'Teachers', 'Children'].map((item) => (
-                      <MenuItem
-                        key={item}
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        py="2"
-                        maxW="31.5rem"
-                        w="100%">
-                        <Text>{item}</Text>
-                        <Button
-                          size="lg"
-                          bg="transparent"
-                          onClick={() => {
-                            addCollaborator(item)
-                          }}>
-                          +
-                        </Button>
-                      </MenuItem>
-                    ))}
-                  </MenuList>
-                </Menu> */}
                 <Stack direction="row" wrap="wrap" mt="4" spacing="2">
                   {selectedEvent?.collaborators?.map(
                     //@ts-ignore

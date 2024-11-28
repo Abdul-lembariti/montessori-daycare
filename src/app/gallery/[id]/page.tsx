@@ -559,9 +559,9 @@ const AlbumDetail = () => {
             aria-label="Previous Page"
             variant="outline"
             colorScheme="none"
-            bg="black"
+            border="1px solid black"
             size="3rem">
-            <ChevronLeftIcon />
+            <Image src="/assets/icons/icons-left.svg" />
           </Button>
 
           <Text fontSize="1.125rem">
@@ -574,9 +574,9 @@ const AlbumDetail = () => {
             rounded="full"
             variant="outline"
             colorScheme="none"
-            bg="black"
+            border="1px solid black"
             size="3rem">
-            <ChevronRightIcon />
+            <Image src="/assets/icons/icons-right.svg" />
           </Button>
         </Box>
       </Box>
@@ -768,10 +768,6 @@ const AlbumDetail = () => {
                 colorScheme="none"
                 bg="red"
                 color="white"
-                variant="outline"
-                _hover={{
-                  colorSchem: 'red',
-                }}
                 onClick={() => handleDeleteImage(currentIndex)}>
                 Delete
               </Button>

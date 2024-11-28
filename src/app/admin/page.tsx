@@ -10,7 +10,6 @@ import {
   useToast,
   Stack,
   VStack,
-  Spinner,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 import {
@@ -21,6 +20,8 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { auth, Db } from '@/firebaseConfig'
+import { setPersistence, browserLocalPersistence } from 'firebase/auth'
+import FullScreenLoader from '@/components/full-screen-loader'
 
 const AdminPage = () => {
   const [email, setEmail] = useState('')
@@ -29,6 +30,12 @@ const AdminPage = () => {
   const [adminUsers, setAdminUsers] = useState<any[]>([])
   const toast = useToast()
   const router = useRouter()
+  const [isScreenLoading, setIsScreenLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsScreenLoading(false), 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const verifyAdmin = async () => {
     try {
@@ -53,11 +60,17 @@ const AdminPage = () => {
 
   useEffect(() => {
     const checkAccess = async () => {
-      const isAdmin = await verifyAdmin()
-      if (!isAdmin) {
-        router.push('/404') 
-      } else {
-        setAuthenticating(false) 
+      try {
+        await setPersistence(auth, browserLocalPersistence) // Ensure persistence
+        const isAdmin = await verifyAdmin()
+        if (!isAdmin) {
+          router.push('/404') // Redirect to 404 page
+        } else {
+          setAuthenticating(false) // Allow access
+        }
+      } catch (error) {
+        console.error('Error in authentication persistence:', error)
+        router.push('/404')
       }
     }
 
@@ -195,20 +208,17 @@ const AdminPage = () => {
     fetchAdminUsers()
   }, [])
 
-  if (authenticating) {
-    return (
-      <Flex justify="center" align="center" height="100vh">
-        <Spinner size="xl" />
-      </Flex>
-    )
+  if (authenticating || isScreenLoading) {
+    return <FullScreenLoader />
   }
 
   return (
     <Flex
-      px="1rem"
+      px={{ base: '1rem', md: '2rem' }}
       direction="column"
       align="center"
       justify="center"
+      minH="100vh"
       mb="2rem">
       <Box
         mt="10rem"
@@ -294,3 +304,5 @@ const AdminPage = () => {
 }
 
 export default AdminPage
+
+
