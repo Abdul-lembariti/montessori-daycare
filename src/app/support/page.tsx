@@ -443,7 +443,7 @@ export default function Support() {
                           </Text>
                           <Text fontSize="1rem">P.O. Box 1234</Text>
                           <Text fontSize="1rem">
-                            Kikatiti, Usa river road, Sauti Ya Moto Kindergarten
+                            Kikatiti, Usa river road, Sauti Ya mtoto Kindergarten
                           </Text>
                           <Text fontSize="1rem">Arusha, Tanzania</Text>
                         </Box>
@@ -461,7 +461,7 @@ export default function Support() {
                               Email:
                             </Box>
                             <Text fontSize="1rem">
-                              montessorisautiyamoto@email.com
+                              montessorisautiyamtoto@email.com
                             </Text>
                           </Box>
                           <Box>
