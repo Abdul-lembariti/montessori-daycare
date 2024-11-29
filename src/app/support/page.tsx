@@ -740,7 +740,7 @@ export default function Support() {
                       </Text>
                       <Text fontSize="0.875rem">P.O. Box 1234</Text>
                       <Text fontSize="0.875rem">
-                        Kikatiti, Usa river road, Sauti Ya Moto Kindergarten
+                        Kikatiti, Usa river road, Sauti Ya Mtoto Kindergarten
                       </Text>
                       <Text fontSize="0.875rem">Arusha, Tanzania</Text>
                     </Box>
@@ -758,7 +758,7 @@ export default function Support() {
                           Email:
                         </Box>
                         <Text fontSize="0.875rem">
-                          montessorisautiyamoto@email.com
+                          montessorisautiyamtoto@gmail.com
                         </Text>
                       </Box>
                       <Box>
