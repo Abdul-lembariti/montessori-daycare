@@ -38,7 +38,7 @@ const NewsandupdatesHomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLargerThan671] = useMediaQuery('(min-width: 671px)')
   const navigate = useRouter()
-  useEffect(() => {
+  useEffect(() => {                                            
     const fetchData = async () => {
       try {
         const db = getFirestore(getApp())
@@ -76,8 +76,8 @@ const NewsandupdatesHomePage = () => {
       bg="#E4E4E4"
       gap="4rem">
       <Flex
-        justify="space-between"
-        alignItems="center"
+        justify="space-between"             
+        alignItems="center"         
         flexDirection={{ base: 'column', md: 'row' }}>
         <Text
           fontSize={{ base: '1.75rem', md: '4rem' }}

@@ -14,7 +14,7 @@ import {
 import { useRouter } from 'next/navigation'
 import {
   collection,
-  query,
+  query, 
   where,
   getDocs,
   updateDoc,

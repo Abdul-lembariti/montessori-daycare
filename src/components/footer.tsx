@@ -262,6 +262,10 @@ export default function Footer() {
               </Link>
               <Flex mt={2} gap={3}>
                 <IconButton
+                  as="a"
+                  href="https://www.facebook.com/montessoriami"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   rounded="full"
                   colorScheme="white"
                   bg="black"
@@ -270,17 +274,25 @@ export default function Footer() {
                 </IconButton>
 
                 <IconButton
+                  as="a"
+                  href="https://twitter.com/montessoriami"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   rounded="full"
                   colorScheme="white"
                   bg="black"
-                  aria-label="Facebook">
+                  aria-label="Twitter">
                   <FaTwitter />
                 </IconButton>
                 <IconButton
+                  as="a"
+                  href="https://www.instagram.com/ami_montessori/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   rounded="full"
                   colorScheme="white"
                   bg="black"
-                  aria-label="Facebook">
+                  aria-label="instagram">
                   <AiFillInstagram />
                 </IconButton>
               </Flex>
